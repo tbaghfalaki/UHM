@@ -1,0 +1,83 @@
+# Example 1
+data(dataD)
+index <- 1:(dim(dataD)[1])
+IND_new <- sample(index, .5 * length(index))
+datat <- dataD[IND_new, ]
+datav <- dataD[-IND_new, ]
+modelY <- y~x1 + x2
+modelZ <- z~x1
+D1 <- ZIHR(modelY, modelZ,
+  data = datat, n.chains = 2, n.iter = 1000,
+  n.burnin = 500, n.thin = 1, family = "Poisson"
+)
+
+\donttest{
+  SummaryZIHR(D1)
+  Prediction(D1, data = datav)
+
+
+D2 <- ZIHR(modelY, modelZ,
+  data = datat, n.chains = 2, n.iter = 1000,
+  n.burnin = 500, n.thin = 1, family = "Bell"
+)
+SummaryZIHR(D2)
+
+
+
+# Example 2
+data(dataC)
+modelY <- y~x1 + x2
+modelZ <- z~x1
+C <- ZIHR(modelY, modelZ,
+  data = dataC, n.chains = 2, n.iter = 1000,
+  n.burnin = 500, n.thin = 1, family = "Gaussian"
+)
+SummaryZIHR(C)
+
+Prediction(C, data = datav)
+
+
+
+# Example 3
+data(dataP)
+modelY <- y~x1 + x2
+modelZ <- z~x1
+P1 <- ZIHR(modelY, modelZ,
+  data = dataP, n.chains = 2, n.iter = 1000,
+  n.burnin = 500, n.thin = 1, family = "Exponential"
+)
+SummaryZIHR(P1)
+
+P2 <- ZIHR(modelY, modelZ,
+  data = dataP, n.chains = 2, n.iter = 1000,
+  n.burnin = 500, n.thin = 1, family = "Gamma"
+)
+SummaryZIHR(P2)
+
+P3 <- ZIHR(modelY, modelZ,
+  data = dataP, n.chains = 2, n.iter = 1000,
+  n.burnin = 500, n.thin = 1, family = "Weibull"
+)
+SummaryZIHR(P3)
+
+
+# Example B
+data(dataB)
+modelY <- y~x1 + x2
+modelZ <- z~x1
+P <- ZIHR(modelY, modelZ,
+  data = dataB, n.chains = 2, n.iter = 1000,
+  n.burnin = 500, n.thin = 1, family = "Beta"
+)
+SummaryZIHR(P)
+
+# Example C
+data(dataI)
+modelY <- y~x1 + x2
+modelZ <- z~x1
+P4 <- ZIHR(modelY, modelZ,
+          data = dataI, n.chains = 2, n.iter = 1000,
+          n.burnin = 500, n.thin = 1, family = "inverse.gaussian"
+)
+SummaryZIHR(P4)
+}
