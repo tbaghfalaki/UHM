@@ -5,10 +5,11 @@ Run a Gibbs sampler for hurdle models to analyze data showing an excess of zeros
 ### Installation
 To acquire the latest development version of UHM, you may utilize the following code snippet to install it directly from GitHub:
 
+```
  \# install.packages("devtools")
  
   devtools::install_github("tbaghfalaki/UHM")
-  
+```
 This will seamlessly fetch and install the most up-to-date version of UHM for your use.
 
 ### Reference 
