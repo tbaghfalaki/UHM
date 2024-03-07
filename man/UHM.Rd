@@ -15,6 +15,13 @@ Ganjali, M., Baghfalaki, T. & Balakrishnan, N. (2024). A Unified Bayesian approa
 
 }
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/tbaghfalaki/UHM}
+}
+
+}
 \author{
 Taban Baghfalaki \email{t.baghfalaki@gmail.com}, Mojtaba Ganjali \email{m-ganjali@sbu.ac.ir}, Narayanaswamy Balakrishnan \email{bala@mcmaster.ca}
 }

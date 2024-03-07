@@ -34,7 +34,7 @@ D1 <- ZIHR(modelY, modelZ,
   n.burnin = 500, n.thin = 1, family = "Poisson"
 )
 
-\dontrun{
+\donttest{
   SummaryZIHR(D1)
   Prediction(D1, data = datav)
 
