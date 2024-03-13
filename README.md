@@ -11,5 +11,10 @@ To acquire the latest development version of UHM, you may utilize the following 
 ```
 This will seamlessly fetch and install the most up-to-date version of UHM for your use.
 
+The package is now accessible on R CRAN as well!
+```
+install.packages("UHM")
+```
+
 ### Reference 
 Ganjali, M., Baghfalaki, T. & Balakrishnan, N. (2024). A Unified Bayesian approach for Modeling Zero-Inflated count and continuous outcomes. *Submitted*.
