@@ -11,7 +11,7 @@ To acquire the latest development version of UHM, you may utilize the following 
 ```
 This will seamlessly fetch and install the most up-to-date version of UHM for your use.
 
-The package is now accessible on R CRAN as well!
+The package is now accessible on R CRAN as well! [https://cran.r-project.org/web/packages/UHM/index.html]
 ```
 install.packages("UHM")
 ```
