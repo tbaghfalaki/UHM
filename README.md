@@ -16,5 +16,11 @@ The package is now accessible on R CRAN as well! [https://cran.r-project.org/web
 install.packages("UHM")
 ```
 
+### Example Usage
+
+This analysis is presented [here](/Exam1.md)
+
+
+
 ### Reference 
 Ganjali, M., Baghfalaki, T. & Balakrishnan, N. (2024). A Unified Bayesian approach for Modeling Zero-Inflated count and continuous outcomes. *Revised*.
