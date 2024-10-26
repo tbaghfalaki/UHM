@@ -17,4 +17,4 @@ install.packages("UHM")
 ```
 
 ### Reference 
-Ganjali, M., Baghfalaki, T. & Balakrishnan, N. (2024). A Unified Bayesian approach for Modeling Zero-Inflated count and continuous outcomes. *Submitted*.
+Ganjali, M., Baghfalaki, T. & Balakrishnan, N. (2024). A Unified Bayesian approach for Modeling Zero-Inflated count and continuous outcomes. *Revised*.
