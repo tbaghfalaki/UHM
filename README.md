@@ -16,6 +16,12 @@ The package is now accessible on R CRAN as well! [https://cran.r-project.org/web
 install.packages("UHM")
 ```
 
+### Hurdle models
+
+Descriptions of various hurdle models are presented [here](/H_model.md)
+
+
+
 ### Example Usage
 
 This analysis is presented [here](/Exam1.md)
