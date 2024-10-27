@@ -2,39 +2,23 @@ Getting Started
 ---------------
 
 ```
-library(UHJM)
+library(UHM)
 ```
-Loading the data from the package includes both longitudinal data in long format and survival data. It's essential to ensure that the same subject (ID) is present in both datasets.
+Loading the data from the package includes response variable and covariates. 
 
 ```
-data(long_data_nb)
-data(surv_data_nb)
+data(dataD)
 ```
 
-Dividing data to 70% training data and 30% validation set:
-
 ```
-set.seed(2)
-  INDTRAIN <- sample(surv_data_nb$id, 0.7 * (dim(surv_data_nb)[1]))
-  INDVALID <- surv_data_nb$id[-INDTRAIN]
-  dataLong_t <- subset(
-    long_data_nb,
-    long_data_nb$id %in% INDTRAIN
-  )
-  dataSurv_t <- subset(
-    surv_data_nb,
-    surv_data_nb$id %in% INDTRAIN
-  )
-  names(dataSurv_t)
-
-  dataLong_v <- subset(
-    long_data_nb,
-    long_data_nb$id %in% INDVALID
-  )
-  dataSurv_v <- subset(
-    surv_data_nb,
-    surv_data_nb$id %in% INDVALID
-  )
+> head(dataD)
+  y x1          x2
+1 0  0 -0.99818639
+2 0  0 -1.28496198
+3 0  0 -1.57777270
+4 0  0 -0.42469587
+5 0  0 -0.06312155
+6 1  0  0.74676177
 ```
 We are considering one marker; therefore, we require one fixed effects model for rate and probability, one random effects model for , and another for the survival model.
 
