@@ -186,7 +186,7 @@ $$
 f_{ZT}(y | \mu_i, \sigma) = \left( \frac{\lambda}{2 \pi y^3} \right)^{1/2} \exp\left(-\frac{\lambda (y - \mu_i)^2}{2 \mu_i^2 y}\right), \quad y > 0,
 $$
 
-where the linear predictor for \( \mu_i \) is given as before.
+where the linear predictor for $\mu_i$ is given as before.
 
 ---
 
@@ -224,7 +224,7 @@ $$
 f_{ZT}(y | \mu_i) = \mu_i \exp(-\mu_i y), \quad y > 0,
 $$
 
-where the linear predictor for \( \mu_i \) is given as before.
+where the linear predictor for $\mu_i$ is given as before.
 
 ---
 
