@@ -20,7 +20,7 @@ $$
 $$
 
 $$
-\logit(\pi_i) = x_{i2} \alpha.
+logit(\pi_i) = x_{i2} \alpha.
 $$
 
 ---
