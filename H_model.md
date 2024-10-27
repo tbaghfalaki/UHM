@@ -16,7 +16,11 @@ $$
 with the log of the mean parameter defined as:
 
 $$
-\log(\lambda_i) = x_{i} \beta.
+\log(\lambda_i) = x_{i1} \beta,
+$$
+
+$$
+\logit(\pi_i) = x_{i2} \alpha.
 $$
 
 ---
