@@ -75,27 +75,9 @@ $LPML
 [1] -382.0315
 ```
 
+To summarize the ZIHR function, we should use SummaryZIHR, which takes an object of class ZIHR as its input.
 
-For the share random effects, the function ZISRE has the following arguments:
-
--  FixedY formula for fixed part of longitudinal count model
--  RandomY formula for random part of longitudinal count model
--  GroupY formula specifying the cluster variable for Y (e.g. = ~ subject)
--  FixedZ formula for fixed part of longitudinal probability model
--  RandomZ formula for random part of longitudinal probability model
--  GroupZ formula specifying the cluster variable for Z (e.g. = ~ subject)
--  offset the offset or library size for discrete response. If offset=NULL, it is considered without an offset.
--  obstime the observed time in longitudinal data
--  formSurv formula for survival model
--  dataLong data set of observed longitudinal variables.
--  dataSurv data set of observed survival variables.
--  n.chains the number of parallel chains for the model; default is 1.
--  n.iter integer specifying the total number of iterations; default is 1000.
--  n.burnin integer specifying how many of n.iter to discard as burn-in ; default is 5000.
--  n.thin integer specifying the thinning of the chains; default is 1.
--  family Family objects provide a convenient way to specify the details of the models. They cover various distributions like "Gaussian", "Exponential", "Weibull", "Gamma", "Beta", "inverse.gaussian", "Poisson", "NB", "Logarithmic", "Bell", "GP", and "Binomial". Specifically, "NB" and "GP" are tailored for hurdle negative binomial and hurdle generalized Poisson joint models, respectively, while the others are utilized for the corresponding models based on their names.
-
-As an example, consider the following command, where this implementation has been performed on training data:
+For example, consider the following command:
 ```
 set.seed(2)
   INDTRAIN <- sample(surv_data_e$id, 0.7 * (dim(surv_data_e)[1]))
