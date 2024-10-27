@@ -20,16 +20,14 @@ data(dataD)
 5 0  0 -0.06312155
 6 1  0  0.74676177
 ```
-We are considering one marker; therefore, we require one fixed effects model for rate and probability, one random effects model for , and another for the survival model.
+
+The key items here are *modelY* and *modelZ*, representing, respectively, a formula for the mean of the count response and a formula for the probability of a zero outcome. This argument structure is identical to that used in the "glm" function.
+
+In our example, we consider the following models:
 
 ```
-FixedY = Y1 ~ obstime + x1 + x2
-RandomY = ~obstime
-GroupY = ~ id
-FixedZ = ~ obstime + x1
-RandomZ = ~obstime
-GroupZ = ~id
-formSurv = Surv(survtime, death) ~ w1 + w2,
+modelY <- y~x1 + x2
+modelZ <- z~x1
 ```
 
 This versatile package supports a wide range of distributional assumptions, encompassing Gaussian, Gamma, inverse Gaussian, Weibull, exponential, beta, Poisson, negative binomial, logarithmic, Bell, generalized Poisson, and binomial distributions. Further elaboration on the model's specifics can be found in Ganjali et al. (2024).
@@ -38,23 +36,14 @@ These joint models are operationalized through two pivotal functions: (1) "ZIJMC
 
 Finally, we have to use the VS function with the following arguments:
 
--  FixedY formula for fixed part of longitudinal count model
--  RandomY formula for random part of longitudinal count model
--  GroupY formula specifying the cluster variable for Y (e.g. = ~ subject)
--  FixedZ formula for fixed part of longitudinal probability model
--  RandomZ formula for random part of longitudinal probability model
--  GroupZ formula specifying the cluster variable for Z (e.g. = ~ subject)
--  formSurv formula for survival model
--  dataLong data set of observed longitudinal variables.
--  dataSurv data set of observed survival variables.
--  obstime the observed time in longitudinal data
--  id the id variable in longitudinal data
--  n.chains the number of parallel chains for the model; default is 1.
--  n.iter integer specifying the total number of iterations; default is 1000.
--  n.burnin integer specifying how many of n.iter to discard as burn-in ; default is 5000.
--  n.thin integer specifying the thinning of the chains; default is 1.
--  K Number of nodes and weights for calculating Gaussian quadrature
--  family Family objects provide a convenient way to specify the details of the models. They cover various distributions like "Gaussian", "Exponential", "Weibull", "Gamma", "Beta", "inverse.gaussian", "Poisson", "NB", "Logarithmic", "Bell", "GP", and "Binomial". Specifically, "NB" and "GP" are tailored for hurdle negative binomial and hurdle generalized Poisson joint models, respectively, while the others are utilized for the corresponding models based on their names.
+- modelY: a formula for the mean of the count response. This argument is identical to the one in the "glm" function.
+- modelZ: a formula for the probability of zero. This argument is identical to the one in the "glm" function.
+- data: data set of observed variables.
+- n.chains: the number of parallel chains for the model; default is 1.
+- n.iter: integer specifying the total number of iterations; default is 1000.
+- n.burnin: integer specifying how many of n.iter to discard as burn-in ; default is 5000.
+- n.thin: integer specifying the thinning of the chains; default is 1.
+- family: Family objects streamline the specification of model details for functions like glm. They cover various distributions like "Gaussian", "Exponential", "Weibull", "Gamma", "Beta", "inverse.gaussian", "Poisson", "NB", "Logarithmic", "Bell", "GP", and "Binomial". Specifically, "NB" and "GP" are tailored for hurdle negative binomial and hurdle generalized Poisson models, respectively, while the others are utilized for the corresponding models based on their names.
 
 As an example, consider the following command, where this implementation has been performed on training data:
 
