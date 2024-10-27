@@ -1,8 +1,3 @@
----
-title: "Hurdle Models Overview"
-output: html_document
----
-
 # Hurdle Models Overview
 
 ## 1. Hurdle Poisson Model
