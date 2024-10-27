@@ -241,4 +241,4 @@ $$
 f_{ZT}(y | \mu_i) = y^{\phi \mu_i} (1 - y)^{\phi (1 - \mu_i)}, \quad 0 < y < 1,
 $$
 
-with the linear predictor for \( \mu_i \) as previously defined.
+with the linear predictor for $\mu_i$ as previously defined.
