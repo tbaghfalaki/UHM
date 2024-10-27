@@ -32,9 +32,7 @@ modelZ <- z~x1
 
 This versatile package supports a wide range of distributional assumptions, encompassing Gaussian, Gamma, inverse Gaussian, Weibull, exponential, beta, Poisson, negative binomial, logarithmic, Bell, generalized Poisson, and binomial distributions. Further elaboration on the model's specifics can be found in Ganjali et al. (2024).
 
-These joint models are operationalized through two pivotal functions: (1) "ZIJMCV", facilitating joint modeling with a proportional hazard sub-model and a piecewise constant baseline hazard, considering associations based on the current values, and (2) "ZISRE," enabling joint modeling with a Weibull sub-model by incorporating a shared random effects model. At first, we consider the first one:
-
-Finally, we have to use the VS function with the following arguments:
+Finally, we have to use the ZIHR function with the following arguments:
 
 - modelY: a formula for the mean of the count response. This argument is identical to the one in the "glm" function.
 - modelZ: a formula for the probability of zero. This argument is identical to the one in the "glm" function.
@@ -45,17 +43,13 @@ Finally, we have to use the VS function with the following arguments:
 - n.thin: integer specifying the thinning of the chains; default is 1.
 - family: Family objects streamline the specification of model details for functions like glm. They cover various distributions like "Gaussian", "Exponential", "Weibull", "Gamma", "Beta", "inverse.gaussian", "Poisson", "NB", "Logarithmic", "Bell", "GP", and "Binomial". Specifically, "NB" and "GP" are tailored for hurdle negative binomial and hurdle generalized Poisson models, respectively, while the others are utilized for the corresponding models based on their names.
 
-As an example, consider the following command, where this implementation has been performed on training data:
+As an example, consider the following command, where this implementation has been performed on the data:
 
 ```
-Z2 <- ZIJMCV(
-    FixedY = Y1 ~ obstime + x1 + x2, RandomY = ~obstime, GroupY = ~id,
-    FixedZ = ~ obstime + x1, RandomZ = ~obstime, GroupZ = ~id,
-    formSurv = Surv(survtime, death) ~ w1 + w2,
-    dataLong = dataLong_t, dataSurv = dataSurv_t,
-    obstime = "obstime", id = "id", n.chains = 2,
-    n.iter = 200, n.burnin = 100, n.thin = 1, K = 15, family = "NB"
-  )
+D1 <- ZIHR(modelY, modelZ,
+           data = dataD, n.chains = 2, n.iter = 1000,
+           n.burnin = 500, n.thin = 1, family = "Poisson"
+)
 ```
 
 A part of its output of the function is as follows:
@@ -63,49 +57,22 @@ A part of its output of the function is as follows:
 ```
 $Estimation
 $Estimation$Count_model
-                   Est         SD         L_CI       U_CI     Rhat
-(Intercept) -0.9393380 0.15128469 -1.224993616 -0.6484760 1.621542
-obstime      0.2625674 0.16164251  0.005090672  0.6192264 1.290469
-x1          -0.6079522 0.19236562 -1.060006716 -0.2798539 1.072495
-x2          -0.6832724 0.08898479 -0.852994882 -0.5144040 1.133840
-Dispersion   5.2285879 0.98801470  3.546213139  7.4822129 1.035696
+                   Est        SD       L_CI      U_CI     Rhat
+(Intercept) -2.0064805 0.2227296 -2.3981608 -1.534287 0.999330
+x1           0.9057071 0.1469032  0.6207732  1.172196 1.012919
+x2           2.0795586 0.1289667  1.8100930  2.301690 0.999356
 
 $Estimation$Zero_inflated_model
-                   Est        SD       L_CI       U_CI     Rhat
-(Intercept) -1.0435121 0.1543119 -1.3578442 -0.7637013 1.025776
-obstime     -0.8803696 0.1796026 -1.2730814 -0.5391646 1.056521
-x1           1.0631190 0.1720780  0.7092521  1.3984815 1.017474
-
-$Estimation$Survival_model
-                    Est         SD       L_CI       U_CI     Rhat
-w1            1.0193130 0.09347805  0.8465882  1.2062719 1.019889
-w2           -1.1007597 0.16804981 -1.4314663 -0.7755796 1.005280
-gamma_lambda -0.5437266 0.08571440 -0.7250236 -0.3866456 1.113134
-gamma_pi     -0.4982187 0.09159170 -0.6773262 -0.3245060 1.002459
-h1            0.9093232 0.21471229  0.5623703  1.4385323 1.171186
-h2            0.8910990 0.17250013  0.5998604  1.2731592 1.126302
-h3            0.8472350 0.14652661  0.5958458  1.1625943 1.099862
-h4            0.9301828 0.17185870  0.6405757  1.3017021 1.037230
-h5            0.8675282 0.39187958  0.3110176  1.7871397 1.001031
-
-$Estimation$D
-$Estimation$D$D11
-          Intercept     Slope
-Intercept 0.9908800 0.5480709
-Slope     0.5480709 1.1476204
-
-$Estimation$D$D22
-          Intercept     Slope
-Intercept 0.8144997 0.2615043
-Slope     0.2615043 0.7440443
-
+                   Est        SD      L_CI        U_CI     Rhat
+(Intercept)  1.4231425 0.1252582  1.185091  1.67389635 1.002524
+x1          -0.5429006 0.2560306 -1.038567 -0.03827461 1.007747
 
 
 $DIC
-[1] 5073.027
+[1] 764.4662
 
 $LPML
-[1] -2296.774
+[1] -382.0315
 ```
 
 
