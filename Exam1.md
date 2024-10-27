@@ -55,6 +55,42 @@ D1 <- ZIHR(modelY, modelZ,
 A part of its output of the function is as follows:
 
 ```
+$modelY
+y ~ x1 + x2
+
+$modelZ
+z ~ x1
+
+$family
+[1] "Poisson"
+
+$MCMC
+$MCMC$beta
+             [,1]      [,2]     [,3]
+   [1,] -1.880414 0.8814448 2.025756
+   [2,] -1.893762 0.7522026 2.032844
+   [3,] -1.937188 0.7072405 2.006569
+   [4,] -1.979348 0.8485283 2.009982
+   [5,] -2.010113 1.1346140 2.003349
+   [6,] -2.044763 1.1959385 2.011071
+   [7,] -2.034832 1.0024188 1.994125
+   [8,] -1.997136 1.2474106 1.996354
+   [9,] -2.084062 1.2243783 1.983649
+  [10,] -2.018987 1.1655343 1.968824
+  [11,] -1.925154 0.8792903 2.071911
+  [12,] -1.988864 1.0713805 2.015874
+  [13,] -1.999956 0.7349105 2.043753
+  [14,] -1.950170 1.1359450 2.028198
+  [15,] -1.973761 0.9706845 1.952756
+  [16,] -1.987063 1.0912046 2.002442
+.
+.
+.
+[499,] 1.553220 -0.546168001
+ [500,] 1.452789 -0.361618993
+ [ reached getOption("max.print") -- omitted 500 rows ]
+
+
 $Estimation
 $Estimation$Count_model
                    Est        SD       L_CI      U_CI     Rhat
@@ -75,84 +111,32 @@ $LPML
 [1] -382.0315
 ```
 
-To summarize the ZIHR function, we should use SummaryZIHR, which takes an object of class ZIHR as its input.
+To summarize the ZIHR function, we should use *SummaryZIHR*, which takes an object of class ZIHR as its input.
 
 For example, consider the following command:
 ```
-set.seed(2)
-  INDTRAIN <- sample(surv_data_e$id, 0.7 * (dim(surv_data_e)[1]))
-  INDVALID <- surv_data_e$id[-INDTRAIN]
-  dataLong_t <- subset(
-    long_data_e,
-    long_data_e$id %in% INDTRAIN
-  )
-  dataSurv_t <- subset(
-    surv_data_e,
-    surv_data_e$id %in% INDTRAIN
-  )
-  names(dataSurv_t)
-
-  dataLong_v <- subset(
-    long_data_e,
-    long_data_e$id %in% INDVALID
-  )
-  dataSurv_v <- subset(
-    surv_data_e,
-    surv_data_e$id %in% INDVALID
-  )
-
-
-  Z1 <- ZISRE(
-    FixedY = Y1 ~ x1 + x2 + obstime, RandomY = ~obstime, GroupY = ~id,
-    FixedZ = ~ x1 + x2 + obstime, RandomZ = ~obstime, GroupZ = ~id,
-    formSurv = Surv(survtime, death) ~ w1,
-    dataLong = dataLong_t, dataSurv = dataSurv_t,
-    obstime = "obstime", offset = NULL,
-    n.chains = 2,
-    n.iter = 2000, n.burnin = 1000, n.thin = 1, family = "Exponential"
-  )
-
+> SummaryZIHR(D1)
 ```
-A part of the output of this function is as follows: 
+The output of this function is as follows: 
 ```
 $Estimation
-$Estimation$Y_model
-                   Est         SD       L_CI       U_CI     Rhat
-(Intercept)  0.9610801 0.10669602  0.7610596  1.1562755 2.890635
-x1           0.5646248 0.07778790  0.4059200  0.7160297 1.016472
-x2           0.5314088 0.04833851  0.4320189  0.6207531 1.500519
-obstime     -0.7546451 0.08694646 -0.9253188 -0.5879938 1.351733
+$Estimation$Count_model
+                   Est        SD       L_CI      U_CI     Rhat
+(Intercept) -2.0064805 0.2227296 -2.3981608 -1.534287 0.999330
+x1           0.9057071 0.1469032  0.6207732  1.172196 1.012919
+x2           2.0795586 0.1289667  1.8100930  2.301690 0.999356
 
 $Estimation$Zero_inflated_model
-                    Est         SD       L_CI         U_CI     Rhat
-(Intercept) -0.17257617 0.09292774 -0.3634907  0.001927923 1.022518
-x1          -0.84544404 0.10879313 -1.0567273 -0.642239328 1.178647
-x2          -0.01148273 0.06148162 -0.1317004  0.108729183 1.233322
-obstime      1.03868094 0.08752284  0.8678618  1.208407196 1.126586
-
-$Estimation$Survival_model
-                     Est         SD       L_CI       U_CI     Rhat
-(Intercept) -0.003074646 0.09910825 -0.1885954  0.1863271 2.512048
-w1           0.909595438 0.14609170  0.6651618  1.1905946 3.119033
-(Intercept)  4.081171087 1.68499032  1.3666209  6.7323928 5.548363
-obstime      0.076677448 1.67419538 -2.3656178  3.3874757 4.281811
-(Intercept)  2.939603247 2.37930402 -1.5429257  6.3966420 4.364750
-obstime     -4.787436631 1.80208901 -7.9888266 -1.3260451 2.283047
-Scale        0.731763580 0.10188681  0.5833568  0.9318901 4.087750
-
-$Estimation$D
-            (Intercept)     obstime  (Intercept)      obstime
-(Intercept)  0.18291289  0.16848338 -0.011761110  0.076022046
-obstime      0.16848338  0.17668661 -0.010728000  0.076949456
-(Intercept) -0.01176111 -0.01072800  0.017657126 -0.001174521
-obstime      0.07602205  0.07694946 -0.001174521  0.046796535
+                   Est        SD      L_CI        U_CI     Rhat
+(Intercept)  1.4231425 0.1252582  1.185091  1.67389635 1.002524
+x1          -0.5429006 0.2560306 -1.038567 -0.03827461 1.007747
 
 
 $DIC
-[1] 6326.464
+[1] 764.4662
 
 $LPML
-[1] -2397.208
+[1] -382.0315
 ```
 
 Dynamic prediction
