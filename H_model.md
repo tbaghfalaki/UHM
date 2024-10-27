@@ -16,11 +16,11 @@ $$
 with the log of the mean parameter defined as:
 
 $$
-\log(\lambda_i) = x_{i1} \beta,
+\log(\lambda_i) = x_{1i} \beta,
 $$
 
 $$
-logit(\pi_i) = x_{i2} \alpha.
+logit(\pi_i) = x_{2i} \alpha.
 $$
 
 ---
@@ -62,7 +62,7 @@ $$
 with:
 
 $$
-\log(\lambda_i) = x_{i} \beta.
+\log(\lambda_i) = x_{1i} \beta.
 $$
 
 ---
@@ -83,7 +83,7 @@ $$
 with:
 
 $$
-\text{logit}(\lambda_i) = x_{i} \beta.
+\text{logit}(\lambda_i) = x_{1i} \beta.
 $$
 
 ---
@@ -110,7 +110,7 @@ $$
 and the log of the mean parameter is:
 
 $$
-\log(\eta_i) = x_{i} \beta.
+\log(\eta_i) = x_{1i} \beta.
 $$
 
 ---
@@ -146,7 +146,7 @@ $$
 where:
 
 $$
-\log(\mu_i) = x_{i} \beta.
+\log(\mu_i) = x_{1i} \beta.
 $$
 
 ---
@@ -205,7 +205,7 @@ $$
 with:
 
 $$
-\log(\mu_i) = - (x_{i} \beta).
+\log(\mu_i) = - (x_{1i} \beta).
 $$
 
 ---
