@@ -4,6 +4,9 @@ Getting Started
 ```
 library(UHM)
 ```
+- Note: In this section, we analyze the dataset dataD from the package, which consists of discrete zero-inflated data. The analysis can be extended to other distributional assumptions by adjusting the family parameter (as used in R's glm() function).
+
+
 Loading the data from the package includes response variable and covariates. 
 
 ```
