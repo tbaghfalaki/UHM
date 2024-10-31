@@ -27,7 +27,7 @@ Descriptions of various hurdle models are presented [here](/H_model.md)
 This analysis is presented [here](/Exam1.md)
 
 
-This analysis of *Number of infected blood cells data* and  *Auto-insurance claim data* are presented [here](statistical_analysis_count_data.md)
+Analysis of the *Number of infected blood cells data* and the *Auto-insurance claim data* is presented [here](statistical_analysis_count_data.md)
 
 
 ### Reference 
