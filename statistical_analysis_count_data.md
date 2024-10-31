@@ -1,13 +1,3 @@
-
----
-title: "Statistical Analysis of Count Data"
-author: "Your Name"
-date: "`r Sys.Date()`"
-output: html_document
----
-
-## Introduction
-
 This document presents a detailed analysis of count data using various statistical models, including Zero-Inflated models. The analysis focuses on the relationship between cell counts and several predictors such as smoking status, weight, sex, and age.
 
 ## Setup
