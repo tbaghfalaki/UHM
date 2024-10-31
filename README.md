@@ -27,6 +27,6 @@ Descriptions of various hurdle models are presented [here](/H_model.md)
 This analysis is presented [here](/Exam1.md)
 
 
-This analysis is presented [here](statistical_analysis_count_data.Rmd(
+This analysis is presented [here](statistical_analysis_count_data.Rmd)
 ### Reference 
 Ganjali, M., Baghfalaki, T. & Balakrishnan, N. (2024). A Unified Bayesian approach for Modeling Zero-Inflated count and continuous outcomes. *Revised*.
