@@ -254,6 +254,4 @@ DIC_CGamma
 LPML_CGamma
 ```
 
-## Conclusion
 
-In this document, we performed a comprehensive analysis of count data using various statistical models. The Zero-Inflated models, including Poisson, Negative Binomial, Logarithmic, Generalized Poisson, and Bell models, were fitted to explore the effects of various predictors on cell counts. Additionally, we analyzed insurance claims data using Zero-Inflated Gamma models and Bayesian Count models. The results provide insights into the factors influencing count data outcomes and highlight the importance of model selection based on data characteristics.
