@@ -14,7 +14,7 @@ library(nnet)  # For class.ind function
 library(cplm)  # For count data models
 ```
 
-## Data Preparation
+##  Number of infected blood cells data
 
 Next, we set the working directory and load the count data from a text file named `cells.txt`.
 
